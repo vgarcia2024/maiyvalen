@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #fdf6ee;
+      --warm:     #f5e6d3;
+      --blush:    #e8c4b0;
+      --rose:     #c4756a;
+      --rose-deep:#9c4a40;
+      --brown:    #5c3d2e;
+      --text:     #3a2218;
+      --text-soft:#7a5c4a;
+      --text-muted:#b09080;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Fondo con textura suave */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(196,117,106,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(232,196,176,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 50% 50%, rgba(245,230,211,0.3) 0%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Corazones flotantes de fondo */
+    .hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-float {
+      position: absolute;
+      font-size: 14px;
+      opacity: 0;
+      animation: floatUp linear infinite;
+      color: var(--rose);
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.25; }
+      90%  { opacity: 0.15; }
+      100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      gap: 3rem;
+    }
+
+    /* ENCABEZADO */
+    .header {
+      text-align: center;
+      animation: fadeDown 1s ease forwards;
+    }
+
+    .header-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .header h1 span {
+      color: var(--rose);
+      font-weight: 400;
+    }
+
+    .header-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* CARDS CONTENEDOR */
+    .cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 820px;
+    }
+
+    /* CARD */
+    .card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(196,117,106,0.18);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      flex: 1;
+      min-width: 280px;
+      max-width: 380px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.8s ease forwards;
+      box-shadow:
+        0 4px 24px rgba(92,61,46,0.06),
+        0 1px 4px rgba(92,61,46,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 12px 40px rgba(92,61,46,0.1),
+        0 2px 8px rgba(92,61,46,0.06);
+    }
+
+    .card:nth-child(2) { animation-delay: 0.15s; }
+
+    /* Decoración esquina */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,117,106,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15%       { transform: scale(1.18); }
+      30%       { transform: scale(1); }
+      45%       { transform: scale(1.1); }
+      60%       { transform: scale(1); }
+    }
+
+    .card-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    /* CONTADORES */
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .counter-item {
+      background: rgba(245,230,211,0.5);
+      border: 1px solid rgba(196,117,106,0.12);
+      border-radius: 12px;
+      padding: 0.75rem 0.25rem;
+    }
+
+    .counter-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+      line-height: 1;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .counter-unit {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .card-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* SEPARADOR */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 500px;
+      animation: fadeIn 1.2s ease forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,117,106,0.3), transparent);
+    }
+
+    .divider-heart {
+      font-size: 16px;
+      color: var(--rose);
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    /* MENSAJE ESPECIAL */
+    .message {
+      text-align: center;
+      max-width: 480px;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    .message-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .message-author {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* DÍAS ESPECIALES */
+    .milestones {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .milestone {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(196,117,106,0.15);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .milestone:hover {
+      background: rgba(196,117,106,0.08);
+      border-color: rgba(196,117,106,0.3);
+    }
+
+    .milestone.active {
+      background: rgba(196,117,106,0.1);
+      border-color: rgba(196,117,106,0.35);
+      color: var(--rose-deep);
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    .footer {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+      text-align: center;
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .cards { gap: 1rem; }
+      .card  { padding: 2rem 1.5rem; min-width: 260px; }
+      .counter-num { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Corazones de fondo -->
+<div class="hearts-bg" id="hearts-bg"></div>
+
+<div class="page">
+
+  <!-- ENCABEZADO -->
+  <div class="header">
+    <div class="header-eyebrow">♡ Una historia de amor</div>
+    <h1>Valen <span>&</span> Mai</h1>
+    <div class="header-sub">El amor de mi vida hecho realidad..</div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+
+    <!-- Primer encuentro -->
+    <div class="card">
+      <span class="card-icon">👀</span>
+      <div class="card-label">Nos conocimos</div>
+      <div class="card-title">Nuestra<br>primer cita</div>
+      <div class="counter-grid">
+        <div class="counter-item">
+          <span class="counter-num" id="enc-years">0</span>
+          <span class="counter-unit">años</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="enc-months">0</span>
+          <span class="counter-unit">meses</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="enc-days">0</span>
+          <span class="counter-unit">días</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="enc-total">0</span>
+          <span class="counter-unit">total</span>
+        </div>
+      </div>
+      <div class="card-date">29 de julio de 2023</div>
+    </div>
+
+    <!-- Novios -->
+    <div class="card">
+      <span class="card-icon">❤️</span>
+      <div class="card-label">NOVIOS UWU</div>
+      <div class="card-title">Me aguantas<br>desde</div>
+      <div class="counter-grid">
+        <div class="counter-item">
+          <span class="counter-num" id="nov-years">0</span>
+          <span class="counter-unit">años</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="nov-months">0</span>
+          <span class="counter-unit">meses</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="nov-days">0</span>
+          <span class="counter-unit">días</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="nov-total">0</span>
+          <span class="counter-unit">total</span>
+        </div>
+      </div>
+      <div class="card-date">21 de agosto de 2023</div>
+    </div>
+
+  </div>
+
+  <!-- SEPARADOR -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-heart">♡</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- MENSAJE -->
+  <div class="message">
+    <div class="message-quote" id="daily-quote">
+      "Desde aquel 29 de julio, cada día tiene más sentido."
+    </div>
+    <div class="message-author">— con todo mi amor</div>
+  </div>
+
+  <!-- HITOS -->
+  <div class="milestones" id="milestones"></div>
+
+  <!-- FOOTER -->
+  <div class="footer" id="footer-date"></div>
+
+</div>
+
+<script>
+  // ── FECHAS ────────────────────────────────────────────────
+  const FECHA_ENCUENTRO = new Date(2023, 6, 29); // 29 julio 2023
+  const FECHA_NOVIOS    = new Date(2023, 7, 21); // 21 agosto 2023
+
+  // ── CORAZONES FLOTANTES ───────────────────────────────────
+  const container = document.getElementById('hearts-bg');
+  const simbolos  = ['♡', '♥', '❤', '✦', '·'];
+
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('span');
+    h.className   = 'heart-float';
+    h.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+    h.style.left  = Math.random() * 100 + 'vw';
+    h.style.animationDuration  = (12 + Math.random() * 20) + 's';
+    h.style.animationDelay     = (Math.random() * 15) + 's';
+    h.style.fontSize            = (10 + Math.random() * 10) + 'px';
+    h.style.opacity             = '0';
+    container.appendChild(h);
+  }
+
+  // ── CALCULAR DIFERENCIA ───────────────────────────────────
+  function calcDiff(from, to) {
+    let years  = to.getFullYear() - from.getFullYear();
+    let months = to.getMonth()    - from.getMonth();
+    let days   = to.getDate()     - from.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(to.getFullYear(), to.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    const totalDias = Math.floor((to - from) / (1000 * 60 * 60 * 24));
+    return { years, months, days, totalDias };
+  }
+
+  // ── HITOS ─────────────────────────────────────────────────
+  const HITOS = [
+    { label: '1 mes juntos',    dias: 23  },
+    { label: '100 días',        dias: 100 },
+    { label: '6 meses',         dias: 184 },
+    { label: '1 año de novios', dias: 365 },
+    { label: '500 días',        dias: 500 },
+    { label: '2 años',          dias: 730 },
+    { label: '1000 días',       dias: 1000},
+    { label: '3 años',          dias: 1095},
+  ];
+
+  function renderHitos(diasNovios) {
+    const cont = document.getElementById('milestones');
+    cont.innerHTML = HITOS.map(h => {
+      const alcanzado = diasNovios >= h.dias;
+      const faltan    = h.dias - diasNovios;
+      return `
+        <div class="milestone ${alcanzado ? 'active' : ''}">
+          ${alcanzado ? '✓' : '○'}
+          ${h.label}
+          ${!alcanzado ? `<span style="color:var(--text-muted); font-size:10px;">(faltan ${faltan} días)</span>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ── FRASES DIARIAS ────────────────────────────────────────
+  const FRASES = [
+    "Desde ese 29 de julio, me dejaste enamorado..",
+    "Gracias por elegirme todos los días.",
+    "Sos lo mejor que me pasó.",
+    "Con vos el tiempo pasa volando y aún así, no quiero dejarte.",
+    "Cada día que pasa es un día más que te elijo.",
+    "Mi lugar en el mundo sos vos.",
+    "Sos mi persona."
+  ];
+
+  function getFraseDiaria() {
+    const hoy = new Date();
+    const idx = (hoy.getDate() + hoy.getMonth()) % FRASES.length;
+    return FRASES[idx];
+  }
+
+  // ── ACTUALIZAR ────────────────────────────────────────────
+  function actualizar() {
+    const ahora = new Date();
+
+    // Encuentro
+    const enc = calcDiff(FECHA_ENCUENTRO, ahora);
+    document.getElementById('enc-years').textContent  = enc.years;
+    document.getElementById('enc-months').textContent = enc.months;
+    document.getElementById('enc-days').textContent   = enc.days;
+    document.getElementById('enc-total').textContent  = enc.totalDias;
+
+    // Novios
+    const nov = calcDiff(FECHA_NOVIOS, ahora);
+    document.getElementById('nov-years').textContent  = nov.years;
+    document.getElementById('nov-months').textContent = nov.months;
+    document.getElementById('nov-days').textContent   = nov.days;
+    document.getElementById('nov-total').textContent  = nov.totalDias;
+
+    // Frase
+    document.getElementById('daily-quote').textContent = `"${getFraseDiaria()}"`;
+
+    // Hitos
+    renderHitos(nov.totalDias);
+
+    // Footer
+    document.getElementById('footer-date').textContent =
+      ahora.toLocaleDateString('es-AR', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+      });
+  }
+
+  actualizar();
+  setInterval(actualizar, 1000 * 60); // actualiza cada minuto
+</script>
+</body>
+</html>
